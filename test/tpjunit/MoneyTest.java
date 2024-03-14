@@ -16,10 +16,18 @@ public class MoneyTest {
     // @Test
     // public void hello() {}
     
+    //@BeforeAll equivalent for JUnit4
+    private static Money m12CHF;
+    private static Money m14CHF;
+    
+    static{
+        m12CHF = new Money(12, "CHF"); // création de données
+        m14CHF = new Money(14, "CHF");
+    }
+    
     @org.junit.Test
     public void testSimpleAdd() {
-        Money m12CHF = new Money(12, "CHF"); // création de données
-        Money m14CHF = new Money(14, "CHF");
+        
         Money expected = new Money(26, "CHF");
         Money result = m12CHF.add(m14CHF); // exécution de la méthode testée
         assertTrue(expected.equals(result)); // comparaison
@@ -27,8 +35,6 @@ public class MoneyTest {
     
     @org.junit.Test
     public void testEquals() {
-        Money m12CHF= new Money(12, "CHF");
-        Money m14CHF= new Money(14, "CHF");
         assertTrue(!m12CHF.equals(null)); 
         assertEquals(m12CHF, m12CHF);
         assertEquals(m12CHF, new Money(12, "CHF"));
