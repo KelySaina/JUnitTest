@@ -3,10 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/thyler/testProjets/netbeans/TPJUnit/src/tpjunit/Money.java</file>
-            <file>file:/home/thyler/testProjets/netbeans/TPJUnit/test/tpjunit/MoneyTest.java</file>
-            <file>file:/home/thyler/testProjets/netbeans/TPJUnit/src/tpjunit/MoneyBag.java</file>
-            <file>file:/home/thyler/testProjets/netbeans/TPJUnit/src/tpjunit/TPJUnit.java</file>
+            <file>file:/home/thyler/testProjets/netbeans/JUnitTest/src/tpjunit/Money.java</file>
+            <file>file:/home/thyler/testProjets/netbeans/JUnitTest/src/tpjunit/MoneyBag.java</file>
         </group>
     </open-files>
 </project-private>
