@@ -41,6 +41,40 @@ public class MoneyBagTest {
         assertTrue(!fMB1.equals(fMB2));
     }
     
+    @org.junit.Test
+    public void testMixedSimpleAdd(){
+        // [12 CHF] + [7 USD] == {[12 CHF][7 USD]}
+        Money bag[] = { f12CHF, f7USD };
+        MoneyBag expected = new MoneyBag(bag);
+        assertEquals(expected, f12CHF.add(f7USD));
+    }
+    
+    @Test
+    public void testBagSimpleAdd() {
+        // [12 CHF] + [7 USD] == {[12 CHF][7 USD]}
+        Money bag[] = { f12CHF, f7USD };
+        MoneyBag expected = new MoneyBag(bag);
+        assertEquals(expected, f12CHF.add(f7USD));
+    }
+
+    @Test
+    public void testSimpleBagAdd() {
+        // [12 CHF] + {[7 USD,12 CHF]} == {[24 CHF][7 USD]}
+        Money bag[] = { f12CHF, f7USD };
+        MoneyBag expected = new MoneyBag(bag);
+        assertEquals(expected, f12CHF.add(expected));
+    }
+    
+    @Test
+    public void testBagBagAdd() {
+        // {[12 CHF][7 USD]} + {[7 USD][12 CHF]} == {[12 CHF][7 USD]}
+        Money bag1[] = { f12CHF, f7USD };
+        Money bag2[] = { f7USD, f12CHF };
+        MoneyBag expected = (MoneyBag) new MoneyBag(bag1).add(new MoneyBag(bag2));
+        assertEquals(expected, new MoneyBag(bag1).add(new MoneyBag(bag2)));
+    }
+    
+    
     
     
 }

@@ -4,6 +4,7 @@
  */
 package tpjunit;
 import static org.junit.Assert.*;
+import org.junit.Test;
 
 /**
  *
@@ -29,7 +30,7 @@ public class MoneyTest {
     public void testSimpleAdd() {
         
         Money expected = new Money(26, "CHF");
-        Money result = m12CHF.add(m14CHF); // exécution de la méthode testée
+        Money result = (Money) m12CHF.add(m14CHF); // exécution de la méthode testée
         assertTrue(expected.equals(result)); // comparaison
     }
     
@@ -40,5 +41,6 @@ public class MoneyTest {
         assertEquals(m12CHF, new Money(12, "CHF"));
         assertTrue(!m12CHF.equals(m14CHF));
     }
+
     
 }
