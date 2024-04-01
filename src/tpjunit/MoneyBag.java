@@ -46,14 +46,33 @@ public class MoneyBag implements IMoney {
 
     public IMoney addMoney(Money m) {
         appendMoney(m);
-        return this;
+        return simplify();
     }
 
     public IMoney addMoneyBag(MoneyBag aMoneyBag) {
         for (int i = 0; i < aMoneyBag.fMoneis.size(); i++)
             appendMoney(aMoneyBag.fMoneis.get(i));
-        return this;
+        return simplify();
     }
+    
+    private IMoney simplify() {
+        int nonZeroCount = 0;
+        Money nonZeroMoney = null;
+
+        for (Money money : fMoneis) {
+            if (money.amount() != 0) {
+                nonZeroCount++;
+                nonZeroMoney = money;
+            }
+        }
+
+        if (nonZeroCount == 1) {
+            return nonZeroMoney;
+        } else {
+            return this;
+        }
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -64,5 +83,19 @@ public class MoneyBag implements IMoney {
         MoneyBag moneyBag = (MoneyBag) o; // Cast to MoneyBag
 
         return fMoneis.equals(moneyBag.fMoneis); // Compare the contents of the bags
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("{");
+        for (int i = 0; i < fMoneis.size(); i++) {
+            if (i > 0) {
+                sb.append(", ");
+            }
+            sb.append(fMoneis.get(i));
+        }
+        sb.append("}");
+        return sb.toString();
     }    
 }

@@ -53,5 +53,10 @@ public class Money implements IMoney {
     public IMoney addMoneyBag(MoneyBag aMoneyBag) {
         return aMoneyBag.add(this);
     }
+    
+    @Override
+    public String toString() {
+        return "[" + fAmount + " " + fCurrency + "]";
+    }
 }
 

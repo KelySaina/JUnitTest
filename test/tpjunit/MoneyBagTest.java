@@ -51,18 +51,19 @@ public class MoneyBagTest {
     
     @Test
     public void testBagSimpleAdd() {
-        // [12 CHF] + [7 USD] == {[12 CHF][7 USD]}
-        Money bag[] = { f12CHF, f7USD };
-        MoneyBag expected = new MoneyBag(bag);
-        assertEquals(expected, f12CHF.add(f7USD));
+        // [12 CHF] + {[7 USD]} == {[7 USD] [12 CHF]}
+        Money bag[] = { f7USD };
+        MoneyBag mBag = new MoneyBag(bag);
+        MoneyBag expected = new MoneyBag(f7USD, f12CHF);
+        assertEquals(expected, mBag.addMoney(f12CHF));
     }
 
     @Test
     public void testSimpleBagAdd() {
         // [12 CHF] + {[7 USD,12 CHF]} == {[24 CHF][7 USD]}
         Money bag[] = { f12CHF, f7USD };
-        MoneyBag expected = new MoneyBag(bag);
-        assertEquals(expected, f12CHF.add(expected));
+        MoneyBag expected = new MoneyBag(new Money(24, "CHF"), f7USD);
+        assertEquals(expected, f12CHF.add(new MoneyBag(bag)));
     }
     
     @Test
